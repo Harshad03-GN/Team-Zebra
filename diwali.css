@@ -111,7 +111,7 @@ body::before {
   padding: 0;
   overflow: hidden;
   border-bottom: 2px solid var(--primary-color);
-  height: 72px; /* Approximately 0.75 inch */
+  height: 130px; 
 }
 
 .diwali-header-wrapper {
@@ -165,8 +165,8 @@ body::before {
 }
 
 .peacock-design {
-  width: 36px;
-  height: 48px;
+  width: 70px;
+  height: 90px;
   position: relative;
 }
 
@@ -212,15 +212,15 @@ body::before {
 }
 
 .mega-rangoli {
-  width: 48px;
-  height: 48px;
+  width: 90px;
+  height: 90px;
   position: relative;
 }
 
 .rangoli-layer {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid var(--primary-color);
+  border: 1.5px solid var(--primary-color);
 }
 
 .rangoli-layer.outer {
@@ -305,24 +305,24 @@ body::before {
 
 .logo-container {
   position: absolute;
-  right: 1rem;
+  right: 1.5rem;
   top: 50%;
   transform: translateY(-50%);
-  padding: 2px;
+  padding: 3px;
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   border-radius: 50%;
   animation: rotateBorder 4s linear infinite;
 }
 
 .logo {
-  height: 32px;
-  width: 32px;
+  height: 60px;
+  width: 60px;
   object-fit: cover;
   border-radius: 50%;
-  border: 1px solid var(--background-dark);
+  border: 2px solid var(--background-dark);
   box-shadow: 
-    0 0 8px rgba(255, 215, 0, 0.3),
-    inset 0 0 4px rgba(255, 215, 0, 0.2);
+    0 0 12px rgba(255, 215, 0, 0.3),
+    inset 0 0 6px rgba(255, 215, 0, 0.2);
   transition: transform 0.3s ease;
 }
 
