@@ -569,9 +569,21 @@ main {
 }
 
 .video-section {
-  margin: 4rem auto;
+  margin: 6rem auto 4rem;
   max-width: 1000px;
   padding: 0 1rem;
+  position: relative;
+}
+
+.video-section::before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
 }
 
 .video-container {
