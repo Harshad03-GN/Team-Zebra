@@ -107,10 +107,170 @@ body::before {
   text-align: center;
   position: relative;
   z-index: 2;
-  background: linear-gradient(to bottom, #140B29 0%, rgba(20, 11, 41, 0.9) 100%);
+  background: linear-gradient(165deg, #140B29 0%, #1C0522 50%, #2C1810 100%);
   padding: 2rem 0;
-  border-bottom: 2px solid var(--primary-color);
   overflow: hidden;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.festival-banner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.mandala-container {
+  width: 150px;
+  height: 150px;
+  position: relative;
+}
+
+.mandala {
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    from 0deg,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--accent-color),
+    var(--primary-color)
+  );
+  border-radius: 50%;
+  position: relative;
+  animation: rotateMandala 20s linear infinite;
+}
+
+.mandala::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 30deg,
+    rgba(255, 255, 255, 0.1) 30deg,
+    rgba(255, 255, 255, 0.1) 60deg
+  );
+  border-radius: 50%;
+  animation: glowMandala 2s ease-in-out infinite alternate;
+}
+
+.central-design {
+  flex: 1;
+  position: relative;
+  padding: 2rem;
+  margin: 0 2rem;
+}
+
+.om-symbol {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px var(--primary-color);
+  animation: glowSymbol 2s ease-in-out infinite alternate;
+}
+
+.diya-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.diya-element {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diya.large {
+  transform: scale(1.3);
+}
+
+.flower {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at center, var(--secondary-color), var(--accent-color));
+  clip-path: polygon(50% 0%, 80% 30%, 100% 50%, 80% 70%, 50% 100%, 20% 70%, 0% 50%, 20% 30%);
+  position: absolute;
+  bottom: -10px;
+  animation: rotatePetal 3s linear infinite;
+}
+
+.flower.center {
+  width: 25px;
+  height: 25px;
+}
+
+.rangoli-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--accent-color),
+    var(--secondary-color),
+    var(--primary-color),
+    transparent
+  );
+  animation: shimmerBorder 3s linear infinite;
+}
+
+.toran-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.toran-element {
+  width: 40px;
+  height: 60px;
+  background: linear-gradient(var(--primary-color), var(--accent-color));
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: swayToran 3s ease-in-out infinite alternate;
+}
+
+@keyframes rotateMandala {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glowMandala {
+  from { filter: drop-shadow(0 0 5px var(--primary-color)); }
+  to { filter: drop-shadow(0 0 15px var(--primary-color)); }
+}
+
+@keyframes glowSymbol {
+  from { opacity: 0.7; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes rotatePetal {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmerBorder {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes swayToran {
+  0% { transform: translateY(0) rotate(-5deg); }
+  100% { transform: translateY(-5px) rotate(5deg); }
 }
 
 .festival-decor {
