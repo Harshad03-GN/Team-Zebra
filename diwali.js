@@ -1,4 +1,3 @@
-// Create firework effect
 function createFirework() {
   const firework = document.createElement('div');
   firework.className = 'firework';
@@ -38,10 +37,8 @@ function createSparkles(firework) {
   }
 }
 
-// Create fireworks periodically
 setInterval(createFirework, 2000);
 
-// Add glowing effect to diyas
 const diyas = document.querySelectorAll('.diya');
 diyas.forEach(diya => {
   setInterval(() => {
@@ -50,7 +47,6 @@ diyas.forEach(diya => {
   }, 100);
 });
 
-// ========== Mobile Menu Toggle ==========
 const menuToggle = document.getElementById("menu-toggle");
 const dropdown = document.querySelector(".dropdown");
 
@@ -62,7 +58,6 @@ menuToggle.addEventListener("change", () => {
   }
 });
 
-// ========== Optional: Close dropdown on link click (for better UX) ==========
 const dropdownLinks = document.querySelectorAll(".dropdown a");
 dropdownLinks.forEach(link => {
   link.addEventListener("click", () => {
@@ -71,14 +66,13 @@ dropdownLinks.forEach(link => {
   });
 });
 
-// ========== Optional: Fade-in animation on scroll ==========
 const fadeElements = document.querySelectorAll(".fade-in");
 
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("fade-in-active");
-      observer.unobserve(entry.target); // Animate once
+      observer.unobserve(entry.target); 
     }
   });
 }, {
