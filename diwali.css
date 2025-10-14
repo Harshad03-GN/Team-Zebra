@@ -108,18 +108,200 @@ body::before {
   position: relative;
   z-index: 2;
   background: linear-gradient(165deg, #140B29 0%, #1C0522 50%, #2C1810 100%);
-  padding: 2rem 0;
+  padding: 0;
   overflow: hidden;
-  border-bottom: 3px solid var(--primary-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grand-header-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  position: relative;
+  background: radial-gradient(circle at center, rgba(255,193,7,0.1) 0%, transparent 70%);
+}
+
+.decorative-arch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  overflow: hidden;
+}
+
+.arch-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: repeating-radial-gradient(
+    circle at 50% -50%,
+    var(--primary-color) 0%,
+    transparent 10%
+  );
+  opacity: 0.3;
+  animation: archGlow 4s ease-in-out infinite;
+}
+
+.hanging-bells {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding-top: 2rem;
+}
+
+.bell {
+  width: 40px;
+  height: 60px;
+  background: linear-gradient(var(--primary-color), var(--accent-color));
+  border-radius: 40% 40% 20% 20%;
+  position: relative;
+  animation: bellSway 3s ease-in-out infinite;
+}
+
+.bell.center {
+  width: 50px;
+  height: 75px;
+  animation-delay: -1.5s;
+}
+
+.bell::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--text-light);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--text-light);
 }
 
 .festival-banner {
-  position: relative;
+  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  margin-bottom: 1.5rem;
+  padding: 2rem;
+  position: relative;
+  margin: 4rem 0;
+}
+
+.banner-left, .banner-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.diya-chain {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: chainSway 4s ease-in-out infinite;
+}
+
+.banner-center {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+}
+
+.grand-rangoli {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  animation: rotateRangoli 20s linear infinite;
+}
+
+.rangoli-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+}
+
+.rangoli-circle.outer {
+  width: 100%;
+  height: 100%;
+  border-color: var(--primary-color);
+  animation: pulseOuter 3s ease-in-out infinite;
+}
+
+.rangoli-circle.middle {
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+  border-color: var(--secondary-color);
+  animation: pulseMiddle 3s ease-in-out infinite;
+}
+
+.rangoli-circle.inner {
+  width: 40%;
+  height: 40%;
+  top: 30%;
+  left: 30%;
+  border-color: var(--accent-color);
+  animation: pulseInner 3s ease-in-out infinite;
+}
+
+.logo-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary-color);
+  box-shadow: 
+    0 0 20px var(--primary-color),
+    inset 0 0 10px var(--primary-color);
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flower-garland {
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.marigold-string {
+  width: 100%;
+  height: 30px;
+  background: repeating-radial-gradient(
+    circle at center,
+    var(--primary-color),
+    var(--accent-color) 10px,
+    transparent 20px
+  );
+  opacity: 0.6;
+  animation: garlandSway 3s ease-in-out infinite;
 }
 
 .mandala-container {
@@ -961,7 +1143,48 @@ footer p {
   text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 
-/* Animations */
+/* Header Animations */
+@keyframes archGlow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes bellSway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes chainSway {
+  0%, 100% { transform: translateX(-10px) rotate(-2deg); }
+  50% { transform: translateX(10px) rotate(2deg); }
+}
+
+@keyframes rotateRangoli {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseOuter {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes pulseMiddle {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes pulseInner {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+@keyframes garlandSway {
+  0%, 100% { transform: translateY(-5px); }
+  50% { transform: translateY(5px); }
+}
+
+/* Other Animations */
 @keyframes flicker {
   0% { transform: scale(1); opacity: 0.8; filter: brightness(1); }
   25% { transform: scale(1.05); opacity: 0.9; filter: brightness(1.2); }
