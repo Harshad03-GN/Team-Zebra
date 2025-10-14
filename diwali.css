@@ -105,13 +105,126 @@ body::before {
 /* Header Styles */
 .site-header {
   text-align: center;
-  padding: 2rem 0;
   position: relative;
   z-index: 2;
+  background: linear-gradient(to bottom, #140B29 0%, rgba(20, 11, 41, 0.9) 100%);
+  padding: 2rem 0;
+  border-bottom: 2px solid var(--primary-color);
+  overflow: hidden;
+}
+
+.festival-decor {
+  position: relative;
+  width: 100%;
+  height: 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
+}
+
+.hanging-diya {
+  position: relative;
+}
+
+.hanging-diya::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: var(--primary-color);
+}
+
+.ornate-design {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.design-element {
+  width: 120px;
+  height: 40px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  position: relative;
+  margin: 0 10px;
+  clip-path: path('M0,20 Q60,0 120,20 Q60,40 0,20');
+  animation: glowingBorder 2s infinite alternate;
+}
+
+.fireworks-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+.firework {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, var(--primary-color) 10%, transparent 70%);
+  opacity: 0;
+}
+
+.firework.left {
+  top: 20%;
+  left: 15%;
+  animation: fireworksLeft 3s infinite;
+}
+
+.firework.right {
+  top: 30%;
+  right: 15%;
+  animation: fireworksRight 3s infinite 1.5s;
+}
+
+.flower-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--primary-color) 10px,
+    var(--accent-color) 10px,
+    var(--accent-color) 20px
+  );
+  opacity: 0.3;
+  animation: borderFlow 20s linear infinite;
+}
+
+@keyframes glowingBorder {
+  0% { filter: drop-shadow(0 0 5px var(--primary-color)); }
+  100% { filter: drop-shadow(0 0 15px var(--primary-color)); }
+}
+
+@keyframes fireworksLeft {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes fireworksRight {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0 0; }
+  100% { background-position: 200% 0; }
 }
 
 .logo-container {
@@ -119,6 +232,10 @@ body::before {
   right: 2rem;
   top: 50%;
   transform: translateY(-50%);
+  padding: 5px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  animation: rotateBorder 4s linear infinite;
 }
 
 .logo {
@@ -126,8 +243,21 @@ body::before {
   width: 60px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid var(--primary-color);
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  border: 2px solid var(--background-dark);
+  box-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.4),
+    inset 0 0 10px rgba(255, 215, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+@keyframes rotateBorder {
+  0% { background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); }
+  50% { background: linear-gradient(225deg, var(--primary-color), var(--secondary-color)); }
+  100% { background: linear-gradient(405deg, var(--primary-color), var(--secondary-color)); }
 }
 
 .logo {
