@@ -312,8 +312,8 @@ body::before {
 }
 
 .logo {
-  height: 60px;
-  width: 60px;
+  height: 100px;
+  width: 100px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid var(--background-dark);
@@ -637,15 +637,15 @@ body::before {
   right: 2rem;
   top: 50%;
   transform: translateY(-50%);
-  padding: 5px;
+  padding: 7px;
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   border-radius: 50%;
   animation: rotateBorder 4s linear infinite;
 }
 
 .logo {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid var(--background-dark);
