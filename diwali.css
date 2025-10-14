@@ -108,96 +108,52 @@ body::before {
   position: relative;
   z-index: 2;
   background: linear-gradient(165deg, #140B29 0%, #1C0522 50%, #2C1810 100%);
-  padding: 0;
+  padding: 2rem 0;
   overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  border-bottom: 3px solid var(--primary-color);
 }
 
-.grand-header-wrapper {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
+.diwali-header-wrapper {
   position: relative;
-  background: radial-gradient(circle at center, rgba(255,193,7,0.1) 0%, transparent 70%);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.decorative-arch {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 150px;
-  overflow: hidden;
+.header-border {
+  position: relative;
+  height: 3px;
+  background: var(--primary-color);
+  margin: 1rem 0;
 }
 
-.arch-pattern {
+.border-pattern {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 100%;
-  background: repeating-radial-gradient(
-    circle at 50% -50%,
-    var(--primary-color) 0%,
-    transparent 10%
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--accent-color),
+    var(--secondary-color),
+    var(--primary-color),
+    transparent
   );
-  opacity: 0.3;
-  animation: archGlow 4s ease-in-out infinite;
+  animation: shimmerBorder 3s linear infinite;
 }
 
-.hanging-bells {
-  display: flex;
-  justify-content: center;
-  gap: 4rem;
-  padding-top: 2rem;
-}
-
-.bell {
-  width: 40px;
-  height: 60px;
-  background: linear-gradient(var(--primary-color), var(--accent-color));
-  border-radius: 40% 40% 20% 20%;
-  position: relative;
-  animation: bellSway 3s ease-in-out infinite;
-}
-
-.bell.center {
-  width: 50px;
-  height: 75px;
-  animation-delay: -1.5s;
-}
-
-.bell::after {
-  content: '';
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  background: var(--text-light);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--text-light);
-}
-
-.festival-banner {
-  flex: 1;
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 0;
   position: relative;
-  margin: 4rem 0;
 }
 
-.banner-left, .banner-right {
+.side-decoration {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -205,103 +161,209 @@ body::before {
   gap: 2rem;
 }
 
-.diya-chain {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  animation: chainSway 4s ease-in-out infinite;
+.peacock-design {
+  width: 120px;
+  height: 150px;
+  position: relative;
 }
 
-.banner-center {
+.peacock-feathers {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at bottom, 
+    var(--primary-color),
+    var(--secondary-color) 50%,
+    var(--accent-color)
+  );
+  clip-path: polygon(50% 0, 80% 30%, 100% 60%, 80% 90%, 50% 100%, 20% 90%, 0 60%, 20% 30%);
+  animation: shimmerFeathers 3s ease-in-out infinite;
+}
+
+.hanging-lantern {
+  width: 40px;
+  height: 60px;
+  background: var(--primary-color);
+  border-radius: 10px;
+  position: relative;
+  animation: swayLantern 3s ease-in-out infinite;
+}
+
+.lantern-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: var(--text-light);
+  border-radius: 50%;
+  animation: lanternGlow 2s ease-in-out infinite;
+}
+
+.center-content {
   flex: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
+}
+
+.mega-rangoli {
+  width: 300px;
+  height: 300px;
   position: relative;
 }
 
-.grand-rangoli {
-  width: 400px;
-  height: 400px;
-  position: relative;
-  animation: rotateRangoli 20s linear infinite;
-}
-
-.rangoli-circle {
+.rangoli-layer {
   position: absolute;
   border-radius: 50%;
   border: 2px solid var(--primary-color);
 }
 
-.rangoli-circle.outer {
+.rangoli-layer.outer {
   width: 100%;
   height: 100%;
-  border-color: var(--primary-color);
-  animation: pulseOuter 3s ease-in-out infinite;
+  animation: rotateOuter 20s linear infinite;
 }
 
-.rangoli-circle.middle {
+.rangoli-layer.middle {
   width: 70%;
   height: 70%;
   top: 15%;
   left: 15%;
   border-color: var(--secondary-color);
-  animation: pulseMiddle 3s ease-in-out infinite;
+  animation: rotateMiddle 15s linear infinite reverse;
 }
 
-.rangoli-circle.inner {
+.rangoli-layer.inner {
   width: 40%;
   height: 40%;
   top: 30%;
   left: 30%;
   border-color: var(--accent-color);
-  animation: pulseInner 3s ease-in-out infinite;
+  animation: rotateInner 10s linear infinite;
 }
 
-.logo-frame {
+.floating-diyas {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.diya-cluster {
+  position: relative;
+}
+
+.diya.small {
+  transform: scale(0.8);
+}
+
+.marigold {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
+  width: 30px;
+  height: 30px;
+  background: var(--primary-color);
   border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--primary-color);
-  box-shadow: 
-    0 0 20px var(--primary-color),
-    inset 0 0 10px var(--primary-color);
+  filter: blur(2px);
+  opacity: 0.6;
+  animation: floatFlower 3s ease-in-out infinite;
+}
+
+.toran-design {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.toran-piece {
+  width: 30px;
+  height: 40px;
+  background: linear-gradient(var(--primary-color), var(--accent-color));
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  animation: swayToran 3s ease-in-out infinite;
+}
+
+.lotus-flowers {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lotus {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(var(--secondary-color), var(--accent-color));
+  clip-path: polygon(50% 0%, 80% 30%, 100% 50%, 80% 70%, 50% 100%, 20% 70%, 0% 50%, 20% 30%);
+  animation: rotateLotus 10s linear infinite;
+}
+
+.logo-container {
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  padding: 5px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  animation: rotateBorder 4s linear infinite;
 }
 
 .logo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.flower-garland {
-  position: absolute;
-  bottom: -2rem;
-  left: 0;
-  right: 0;
   height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--background-dark);
+  box-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.4),
+    inset 0 0 10px rgba(255, 215, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
-.marigold-string {
-  width: 100%;
-  height: 30px;
-  background: repeating-radial-gradient(
-    circle at center,
-    var(--primary-color),
-    var(--accent-color) 10px,
-    transparent 20px
-  );
-  opacity: 0.6;
-  animation: garlandSway 3s ease-in-out infinite;
+.logo:hover {
+  transform: scale(1.1);
+}
+
+@keyframes shimmerFeathers {
+  0%, 100% { opacity: 0.7; filter: hue-rotate(0deg); }
+  50% { opacity: 1; filter: hue-rotate(45deg); }
+}
+
+@keyframes swayLantern {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes lanternGlow {
+  0%, 100% { opacity: 0.5; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes rotateOuter {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateMiddle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateInner {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatFlower {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmerBorder {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 .mandala-container {
